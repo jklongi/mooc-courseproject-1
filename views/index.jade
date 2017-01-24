@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+
+  h2 Log in
+    form(method='POST' action='/login')
+      input(type="text" id="name" placeholder="name" name="name")
+      input(type="password" id="password" placeholder="password" name="password")
+      button(type="submit") Log in
+
+  div#link
+
+  script.
+    function getParameterByName(name, url) {
+      if (!url) {
+        url = window.location.href;
+      }
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    document.getElementById('link').innerHTML = '<a href="'+getParameterByName('link')+'">Link</a>';
+

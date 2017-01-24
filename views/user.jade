@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Username: #{data.name}
+  p Pankki: #{data.iban}
+
+  script.
+    var data = !{JSON.stringify(data)};
+    console.log(data);
+
